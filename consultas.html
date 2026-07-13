@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrabalho | Consultas</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <h2>Retrabalho</h2>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="lancamentos.html">Lancamentos</a>
+        <a href="consultas.html" class="ativo">Consultas</a>
+        <a href="pecas.html">Pecas</a>
+        <a href="instrucoes.html">Instrucoes</a>
+    </aside>
+
+    <main class="conteudo">
+        <div class="titulo-pagina">
+            <h1>Consultas e Relatorios</h1>
+            <p>Filtre os apontamentos por periodo, fabrica, codigo ou M.U.</p>
+        </div>
+
+        <section class="card">
+            <h2>Filtros</h2>
+            <div class="filtros-grid">
+                <div>
+                    <label for="dataInicial">Data inicial</label>
+                    <input type="date" id="dataInicial">
+                </div>
+                <div>
+                    <label for="dataFinal">Data final</label>
+                    <input type="date" id="dataFinal">
+                </div>
+                <div>
+                    <label for="filtroPeca">Codigo ou descricao</label>
+                    <input type="text" id="filtroPeca" placeholder="Buscar peca">
+                </div>
+                <div>
+                    <label for="filtroMU">Numero da M.U</label>
+                    <input type="text" id="filtroMU" placeholder="Ex.: MU-123456">
+                </div>
+                <div>
+                    <label for="filtroFabrica">Fabrica</label>
+                    <select id="filtroFabrica">
+                        <option value="">Todas</option>
+                        <option>AEN</option>
+                        <option>AMN</option>
+                        <option>ATN</option>
+                        <option>ACN</option>
+                        <option>AVN</option>
+                        <option>ASN</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="acoes-form">
+                <button type="button" onclick="pesquisarConsultas()" class="btn-primario">Pesquisar</button>
+                <button type="button" onclick="limparFiltros()" class="btn-secundario">Limpar filtros</button>
+                <button type="button" onclick="exportarExcel()" class="btn-secundario">Exportar Excel</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Backup local</h2>
+            <p class="texto-apoio">Use estes botoes para levar os dados para outro computador ou celular. O arquivo gerado pode ser importado em outro navegador.</p>
+            <div class="acoes-form">
+                <button type="button" onclick="exportarDadosTXT()" class="btn-secundario">Gerar TXT de dados</button>
+                <label class="btn-upload" for="arquivoImportacao">Importar TXT</label>
+                <input type="file" id="arquivoImportacao" accept=".txt,.json,application/json" hidden>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="cabecalho-lista">
+                <h2>Resultados</h2>
+                <span id="totalResultados" class="contador">0 registros</span>
+            </div>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Turno</th>
+                            <th>Responsavel</th>
+                            <th>Fabrica</th>
+                            <th>Codigo</th>
+                            <th>Descricao</th>
+                            <th>Numero M.U</th>
+                            <th>Pecas</th>
+                            <th>CC</th>
+                            <th>Obs</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultadoConsulta"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="js/pecas.js"></script>
+<script src="js/app.js"></script>
+<script src="js/consultas.js"></script>
+</body>
+</html>

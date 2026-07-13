@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrabalho | Lancamentos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <h2>Retrabalho</h2>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="lancamentos.html" class="ativo">Lancamentos</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pecas.html">Pecas</a>
+        <a href="instrucoes.html">Instrucoes</a>
+    </aside>
+
+    <main class="conteudo">
+        <div class="titulo-pagina">
+            <h1>Lancamento de Retrabalho</h1>
+            <p>Formulario rapido para registrar numero da M.U, peca, responsavel e observacoes.</p>
+        </div>
+
+        <section class="card">
+            <form id="formLancamento" class="form-grid">
+                <div>
+                    <label for="data">Data</label>
+                    <input type="date" id="data" required>
+                </div>
+
+                <div>
+                    <label for="turno">Turno</label>
+                    <select id="turno" required>
+                        <option value="">Selecione</option>
+                        <option>1 Turno</option>
+                        <option>2 Turno</option>
+                        <option>3 Turno</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="responsavel">Responsavel</label>
+                    <input type="text" id="responsavel" placeholder="Nome do operador" autocomplete="off" required>
+                </div>
+
+                <div>
+                    <label for="peca">Codigo da peca</label>
+                    <input type="text" id="peca" placeholder="Digite ou leia o codigo" list="listaCodigos" autocomplete="off" required>
+                    <datalist id="listaCodigos"></datalist>
+                </div>
+
+                <div class="span-2">
+                    <label for="descricao">Descricao</label>
+                    <input type="text" id="descricao" readonly>
+                </div>
+
+                <div>
+                    <label for="fabrica">Fabrica</label>
+                    <input type="text" id="fabrica" readonly>
+                </div>
+
+                <div>
+                    <label for="cc">Centro de custo</label>
+                    <input type="text" id="cc" readonly>
+                </div>
+
+                <div>
+                    <label for="mu">Numero da M.U</label>
+                    <input type="text" id="mu" placeholder="Ex.: MU-123456" autocomplete="off" required>
+                </div>
+
+                <div>
+                    <label for="quantidadeTotal">Total de pecas</label>
+                    <input type="number" id="quantidadeTotal" readonly>
+                </div>
+
+                <div class="span-3">
+                    <p id="alertaCC" class="mensagem-alerta"></p>
+                </div>
+
+                <div class="span-3">
+                    <label for="obs">Observacoes</label>
+                    <textarea id="obs" placeholder="Ex.: retrabalho realizado, divergencia, lote, apontamento"></textarea>
+                </div>
+
+                <div class="acoes-form span-3">
+                    <button id="btnSalvar" type="submit" class="btn-primario">Salvar lancamento</button>
+                    <button id="btnLimpar" type="button" class="btn-secundario">Limpar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="cabecalho-lista">
+                <h2>Ultimos lancamentos</h2>
+                <span id="totalLancamentos" class="contador">0 registros</span>
+            </div>
+            <div id="listaLancamentos" class="lista-lancamentos"></div>
+        </section>
+    </main>
+</div>
+
+<script src="js/pecas.js"></script>
+<script src="js/app.js"></script>
+<script src="js/lancamentos.js"></script>
+</body>
+</html>
